@@ -54,7 +54,7 @@
 									<textarea type="text" name="corpoEmail" id="corpoEmail" value="" placeholder="Ola, venho por meio deste e-mail tentar forçar você a comprar coisas sem necessidade e de entupir a sua caixa de entrada com informações inúteis. :)" ></textarea>
 								</div>
 								<div>
-									<a href="#" class="button primary">Enviar</a>
+									<button class="button primary" onclick="getApi()">Enviar</button>
 								</div>
 							</div>
 						</form>
@@ -90,11 +90,23 @@
 			</footer>
 
 		<!-- Scripts -->
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/browser.min.js"></script>
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script>
+					const url = 'http://127.0.0.1:3000/spam-analysis';
+					axios.get(url)
+					.then((response)=>{
+						console.log(response.data)
+					})
+					.catch((error)=>{
+						console.log(error)
+					})
+				
+			</script>
 
 	</body>
 </html>

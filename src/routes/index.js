@@ -3,7 +3,11 @@
 const express = require('express');
 const route = express();
 const axios = require('axios');
-
+route.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
 route.get('/spam-analysis', (req, res) => {
     const url = 'https://spamcheck.postmarkapp.com/filter';
     const config = {

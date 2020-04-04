@@ -1,5 +1,5 @@
-const axios = require('axios');
 function getApi(request){
+    console.log(request);
     const url = 'http://127.0.0.1:3000/spam-analysis';
     const config = {
         headers:{
@@ -8,15 +8,16 @@ function getApi(request){
         },
     };
     const data = {
-        email: 'raw dump of email', 
-        options: 'short',
+        email: request.remetente, 
+        options: request.body,
     };
 
-    axios.post(url, JSON.stringify(data), config)
+    axios.post(url, data, config)
     .then((response)=>{
-        res.send(response.data)
+        console.log(response.data)
+        //res.send(response.data);
     })
     .catch((error)=>{
         console.log(error)
     })
-}
+};

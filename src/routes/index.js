@@ -1,15 +1,18 @@
 'use strict'
 
 const express = require('express');
-const route = express();
+const app = express();
 const axios = require('axios');
-route.use(function(req, res, next) {
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
-  });
-route.get('/spam-analysis', (req, res) => {
+});
+app.post('/spam-analysis', (req, res) => {
     const url = 'https://spamcheck.postmarkapp.com/filter';
+    console.log(req.body);
     const config = {
         headers:{
             Accept: 'application/json',
@@ -17,8 +20,8 @@ route.get('/spam-analysis', (req, res) => {
         },
     };
     const data = {
-        email: 'raw dump of email', 
-        options: 'short',
+        email: req.body.email, 
+        options: req.body.options,
     };
 
     axios.post(url, JSON.stringify(data), config)
@@ -30,4 +33,4 @@ route.get('/spam-analysis', (req, res) => {
     })
 })
 
-route.listen(3000);
+app.listen(3000);

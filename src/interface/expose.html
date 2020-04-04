@@ -54,7 +54,7 @@
 									<textarea type="text" name="corpoEmail" id="corpoEmail" value="" placeholder="Ola, venho por meio deste e-mail tentar forçar você a comprar coisas sem necessidade e de entupir a sua caixa de entrada com informações inúteis. :)" ></textarea>
 								</div>
 								<div>
-									<input type='button' class="button primary" onclick="getAPI()" value="Enviar" />
+									<input type='button' class="button primary" onclick="callAPI()" value="Enviar" />
 								</div>
 							</div>
 						</form>
@@ -91,22 +91,20 @@
 
 		<!-- Scripts -->
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+			<script src="js/apiGet.js"></script>
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/browser.min.js"></script>
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
 			<script>
-				function getAPI(){
-					const url = 'http://127.0.0.1:3000/spam-analysis';
-					console.log(url);
-					axios.get(url)
-					.then((response)=>{
-						console.log(response)
-					})
-					.catch((error)=>{
-						console.log(error)
-					})
+				function callAPI(){
+					const email = {
+						remetente: document.getElementById('email').value,
+						body: document.getElementById('corpoEmail').value,
+					};
+					getApi(email);
+					
 				}
 					
 				

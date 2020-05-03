@@ -16,6 +16,7 @@ app.post('/spam-analysis', async (req, res) => {
     const response = {
         datumbox: await apis.getDatumbox(req.body),
         postMark: await apis.postMark(req.body),
+        plino: await apis.postPlino(req.body),
     };
     console.log(response);
     res.send(response); 

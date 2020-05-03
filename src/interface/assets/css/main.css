@@ -81,13 +81,37 @@ input::-moz-focus-inner {
   border: 0;
   padding: 0; }
 
-input, select, textarea {
+input, select{
   -moz-appearance: none;
   -webkit-appearance: none;
   -ms-appearance: none;
   height: 80%;
   resize: none;
   appearance: none; }
+textarea{
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical;
+}
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
 
 /* Typography */
 html {

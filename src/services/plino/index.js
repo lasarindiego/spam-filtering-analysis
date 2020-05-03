@@ -10,7 +10,6 @@ const postPlino = async (objRequest) => {
             'content-type': 'application/json',
         },
     };
-    const str = 'ÁÉÍÓÚáéíóúâêîôûàèìòùÇç/.,~!@#$%&_-12345';
     const parsed = objRequest.email.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
     const data = {
         email_text: parsed,

@@ -19,6 +19,7 @@ app.post('/spam-analysis', async (req, res) => {
         plino: await apis.postPlino(req.body),
         antideo: await apis.getAntideo(req.body),
         clearout: await apis.postClearout(req.body),
+        zero: await apis.getZero(req.body),
     };
     res.send(response); 
 })

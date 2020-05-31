@@ -2,8 +2,8 @@
 
 const request = require('axios');
 
-const getAntideo = async (objRequest) => {
-    let url = `http://api.antideo.com/email/${objRequest.remetente}`;
+const getZero = async (objRequest) => {
+    let url = `https://api.zerobounce.net/v2/validate?api_key=df1e0a9200d149439956e6d10b6fbb5e&email=${objRequest.remetente}&ip_address=`;
     const config = {
         headers:{
             Accept: 'application/json',
@@ -18,4 +18,4 @@ const getAntideo = async (objRequest) => {
     };
 };
 
-module.exports = getAntideo;
+module.exports = getZero;

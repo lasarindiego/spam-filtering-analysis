@@ -9,7 +9,6 @@ const getDatumbox = async (objRequest) => {
         headers:{
             Accept: 'application/json',
             'content-type': 'application/json',
-            
         },
     };
     try {

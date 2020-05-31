@@ -8,7 +8,7 @@ function getApi(request){
     };
     const data = {
         email: request.body, 
-        options: request.remetente,
+        remetente: request.remetente,
     };
 
     axios.post(url, data, config)

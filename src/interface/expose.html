@@ -8,6 +8,7 @@
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/abas.css">
 	</head>
 	<body class="is-preload">
 
@@ -44,109 +45,145 @@
 						<hr />
 						<h3>E-mail suspeito</h3>
 						<form method="post" action="#">
-							<div class="row gtr-uniform">
-								<div class="col-4">
-									<h4>Remetente</h4>
-									<input type="email" name="email" id="email" value="" placeholder="exemplo@email.com" />
-								</div>
-								<div class="col-12">
-									<div class="row"></div>
-										<h4>Corpo do e-mail</h4>
-										<div class="col-75">
-											<textarea type="text" name="corpoEmail" id="corpoEmail" value=""  placeholder="Ola, venho por meio deste e-mail tentar forçar você a comprar coisas sem necessidade e de entupir a sua caixa de entrada com informações inúteis. :)" ></textarea>
-										</div>
-									</div>
-								</div>
-								<br>
-								<div>
-									<input type='button' class="button primary" onclick="callAPI()" value="Enviar" />
+						<div class="row gtr-uniform">
+							<div class="col-4">
+								<h4>Remetente</h4>
+								<input type="email" name="email" id="email" value="" placeholder="exemplo@email.com" />
+							</div>
+							<div class="col-12">
+								<div class="row"></div>
+								<h4>Corpo do e-mail</h4>
+								<div class="col-75">
+									<textarea type="text" name="corpoEmail" id="corpoEmail" value=""  placeholder="Ola, venho por meio deste e-mail tentar forçar você a comprar coisas sem necessidade e de entupir a sua caixa de entrada com informações inúteis. :)" ></textarea>
 								</div>
 							</div>
+						</div>
+						<br>
+						<div>
+							<input type='button' class="button primary" onclick="callAPI()" value="Enviar" />
+						</div>
 						</form>
-						<hr />
-						<div id="analise" class="table-wrapper" style="display:none;">
-							<h3>Análise</h3>
-							<table class="alt">
-								<thead>
-									<tr>
-										<th>Descrição</th>
-										<th>PostMark</th>
-										<th>Datumbox</th>
-										<th>Plino</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>Foi possível realizar a checagem?</td>
-										<td id="sucessoMark"></td>
-										<td id="sucessoDatum"></td>
-										<td id="sucessoPlino"></td>
-									</tr>
-									<tr>
-										<td id="regra0d">Descrição da regra 1</td>
-										<td id="regra0"></td>
-										<td></td>
-										<td></td>
-									</tr>
-									<tr>
-										<td id="regra1d">Descrição da regra 2</td>
-										<td id="regra1"></td>
-										<td></td>
-										<td></td>
-									</tr>
-									<tr>
-										<td id="regra2d">Descrição da regra 3</td>
-										<td id="regra2"></td>
-										<td></td>
-										<td></td>
-									</tr>
-									<tr>
-										<td id="regra3d">Descrição da regra 4</td>
-										<td id="regra3"></td>
-										<td></td>
-										<td></td>
-									</tr>
-									<tr>
-										<td id="regra4d">Descrição da regra 5</td>
-										<td id="regra4"></td>
-										<td></td>
-										<td></td>
-									</tr>
-									<tr>
-										<td id="regra5d">Descrição da regra 6</td>
-										<td id="regra5"></td>
-										<td></td>
-										<td></td>
-									</tr>
-									<tr>
-										<td id="regra6d">Descrição da regra 7</td>
-										<td id="regra6"></td>
-										<td></td>
-										<td></td>
-									</tr>
-									<tr>
-										<td id="regra7d">Descrição da regra 8</td>
-										<td id="regra7"></td>
-										<td></td>
-										<td></td>
-									</tr>
-									<tr>
-										<td id="regra8d">Descrição da regra 9</td>
-										<td id="regra8"></td>
-										<td></td>
-										<td></td>
-									</tr>
-									<tr>
-										<td>Resultado</td>
-										<td id="pontuacao"></td>
-										<td id="datumbox"></td>
-										<td id="plino"></td>
-									</tr>
-								</tbody>
-						</table>
+							<div id="analise" class="table-wrapper" style="display:block;">
+								<hr>
+								<ul class="nav nav-tabs">
+									<li class="active"><a data-toggle="tab" href="#spamwatcher">SPAM_WATCHER</a></li>
+									<li><a data-toggle="tab" href="#postmark">PostMark</a></li>
+									<li><a data-toggle="tab" href="#datumbox">DatumBox</a></li>
+									<li><a data-toggle="tab" href="#plino">Plino</a></li>
+								</ul>
+								<div class="tab-content">
+									<div id="spamwatcher" class="tab-pane fade in active">
+										<br>
+										<h3>SPAM_WATCHER</h3>
+									</div>
+									<div id="postmark" class="tab-pane fade">
+										<br>
+										<h3>PostMark</h3>
+										<table class="alt">
+											<thead>
+												<tr>
+													<th>Descrição</th>
+													<th>PostMark</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>Foi possível realizar a checagem?</td>
+													<td id="sucessoMark"></td>
+												</tr>
+												<tr>
+													<td id="regra0d">Descrição da regra 1</td>
+													<td id="regra0"></td>
+												</tr>
+												<tr>
+													<td id="regra1d">Descrição da regra 2</td>
+													<td id="regra1"></td>
+												</tr>
+												<tr>
+													<td id="regra2d">Descrição da regra 3</td>
+													<td id="regra2"></td>
+												</tr>
+												<tr>
+													<td id="regra3d">Descrição da regra 4</td>
+													<td id="regra3"></td>
+												</tr>
+												<tr>
+													<td id="regra4d">Descrição da regra 5</td>
+													<td id="regra4"></td>
+												</tr>
+												<tr>
+													<td id="regra5d">Descrição da regra 6</td>
+													<td id="regra5"></td>
+												</tr>
+												<tr>
+													<td id="regra6d">Descrição da regra 7</td>
+													<td id="regra6"></td>
+												</tr>
+												<tr>
+													<td id="regra7d">Descrição da regra 8</td>
+													<td id="regra7"></td>
+												</tr>
+												<tr>
+													<td id="regra8d">Descrição da regra 9</td>
+													<td id="regra8"></td>
+												</tr>
+												<tr>
+													<td>Resultado</td>
+													<td id="pontuacao"></td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<div id="datumbox" class="tab-pane fade">
+										<br>
+										<h3>DatumBox</h3>
+										<table class="alt">
+											<thead>
+												<tr>
+													<th>Descrição</th>
+													<th>Datumbox</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>Foi possível realizar a checagem?</td>
+													<td id="sucessoDatum"></td>
+												</tr>
+												<tr>
+													<td>Resultado</td>
+													<td id="datumboxTb"></td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<div id="plino" class="tab-pane fade">
+										<br>
+										<h3>Plino</h3>
+										<table class="alt">
+											<thead>
+												<tr>
+													<th>Descrição</th>
+													<th>Plino</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>Foi possível realizar a checagem?</td>
+													<td id="sucessoPlino"></td>
+												</tr>
+												<tr>
+													<td>Resultado</td>
+													<td id="plinoTb"></td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
-				</div>
-			</section>
+				</div>	
+			</section>		
 
 		<!-- Footer -->
 			<footer id="footer">
@@ -162,10 +199,7 @@
 						<section>
 							<h4>Redes sociais</h4>
 							<ul class="plain">
-								<li><a href="#"><i class="icon fa-twitter">&nbsp;</i>Twitter</a></li>
-								<li><a href="#"><i class="icon fa-facebook">&nbsp;</i>Facebook</a></li>
-								<li><a href="#"><i class="icon fa-instagram">&nbsp;</i>Instagram</a></li>
-								<li><a href="#"><i class="icon fa-github">&nbsp;</i>Github</a></li>
+								<li><a href="https://github.com/lasarindiego/spam-filtering-analysis"><i class="icon fa-github">&nbsp;</i>Github</a></li>
 							</ul>
 						</section>
 					</div>
@@ -183,6 +217,8 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 			<script>
 				async function callAPI(){
 					const email = {

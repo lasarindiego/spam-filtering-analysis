@@ -21,9 +21,9 @@ function getApi(request){
             document.getElementById(`regra${index}d`).innerHTML = item.description;
         })
         document.getElementById('sucessoDatum').innerHTML = response.data.datumbox.status;
-        document.getElementById('datumbox').innerHTML = response.data.datumbox.result;
+        document.getElementById('datumboxTb').innerHTML = response.data.datumbox.result;
         document.getElementById('sucessoPlino').innerHTML = response.data.plino.status;
-        document.getElementById('plino').innerHTML = response.data.plino.email_class;
+        document.getElementById('plinoTb').innerHTML = response.data.plino.email_class;
     })
     .catch((error)=>{
         console.log(error)

@@ -11,7 +11,10 @@ module.exports = {
     getDatumbox: servicesDatumbox,
     postMark: servicesPostMark,
     postPlino: servicesPlino,
-    getAntideo: servicesAntideo,
+    getAntideo: servicesAntideo.getAntideo,
     postClearout: servicesClearout,
+    getIpLocation: servicesAntideo.getIpLocation,
+    getIpHealth: servicesAntideo.getIpHealth,
+    getIpInfo: servicesAntideo.getIpInfo,
     getZero: servicesZero,
 };

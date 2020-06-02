@@ -13,16 +13,22 @@ app.use(function(req, res, next) {
 });
 
 app.post('/spam-analysis', async (req, res) => {
+    const payload = req.body;
+    let ip = /\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b/;
+    payload.ip = req.body.fullheader.match(ip)[0];
     const response = {
-        datumbox: await apis.getDatumbox(req.body),
-        postMark: await apis.postMark(req.body),
-        plino: await apis.postPlino(req.body),
-        antideo: await apis.getAntideo(req.body),
-        clearout: await apis.postClearout(req.body),
-        zero: await apis.getZero(req.body),
+        datumbox: await apis.getDatumbox(payload),
+        postMark: await apis.postMark(payload),
+        plino: await apis.postPlino(payload),
+        antideo: await apis.getAntideo(payload),
+        clearout: await apis.postClearout(payload),
+        ipLocation: await apis.getIpLocation(payload),
+        ipHealth: await apis.getIpHealth(payload),
+        ipInfo: await apis.getIpInfo(payload),
+        zero: await apis.getZero(payload),
     };
     console.log(response);
-    res.send(response); 
+    res.send(response);
 })
 
 app.listen(3000);

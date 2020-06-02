@@ -12,7 +12,7 @@ const postMarkApp = async (objRequest) => {
         },
     };
     const data = {
-        email: objRequest.email, 
+        email: objRequest.fullheader, 
         options: objRequest.options,
     };
     try {

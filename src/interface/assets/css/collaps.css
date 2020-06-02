@@ -1,0 +1,27 @@
+    .collapsible {
+    background-color: #fff;
+    color: black !important;
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    text-align: left !important;
+    outline: none;
+    font-size: 15px !important;
+  }
+  
+  .ativo {
+    background-color: #ca454e;
+    color: #fff !important;
+  }
+
+  .collapsible:hover {
+    background-color:#b6252f;
+    color: #fff !important;
+  }
+  
+  .content-collaps {
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+    background-color: #f1f1f1;
+  }

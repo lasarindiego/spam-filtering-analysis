@@ -9,7 +9,11 @@
 		<meta name="keywords" content="" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<link rel="stylesheet" href="assets/css/abas.css">
+		<link rel="stylesheet" href="assets/css/loading.css">
+		<link rel="stylesheet" href="assets/css/collaps.css">
+		<link rel="icon" type="image/png" href="images/favicon.png">
 	</head>
+
 	<body class="is-preload">
 
 		<!-- Header -->
@@ -57,17 +61,25 @@
 									<textarea type="text" name="corpoEmail" id="corpoEmail" value=""  placeholder="Ola, venho por meio deste e-mail tentar forçar você a comprar coisas sem necessidade e de entupir a sua caixa de entrada com informações inúteis. :)" ></textarea>
 								</div>
 							</div>
+							<div class="col-12">
+								<div class="row"></div>
+								<h4>Full Header (Cabeçalho completo do e-mail)</h4>
+								<div class="col-75">
+									<textarea type="text" name="fullHeader" id="fullHeader" value=""  placeholder="Delivered-To: xxxxxxxxxx@gmail.com  Received: by 2006:x5x:4x53:0:0:0:0:0 with SMTP id a17cxp4065372xru;" ></textarea>
+								</div>
+							</div>
 						</div>
 						<br>
 						<div>
 							<input type='button' class="button primary" onclick="callAPI()" value="Enviar" />
 						</div>
 						</form>
-							<div id="analise" class="table-wrapper" style="display:block;">
+
+						<div id="loading" class="spinner" style="display:none;"></div>
+							<div id="analise" class="table-wrapper" style="display:none;">
 								<hr>
 								<ul class="nav nav-tabs">
 									<li class="active"><a data-toggle="tab" href="#spamwatcher">SPAM_WATCHER</a></li>
-									<li><a data-toggle="tab" href="#postmark">PostMark</a></li>
 									<li><a data-toggle="tab" href="#datumbox">DatumBox</a></li>
 									<li><a data-toggle="tab" href="#plino">Plino</a></li>
 								</ul>
@@ -75,64 +87,30 @@
 									<div id="spamwatcher" class="tab-pane fade in active">
 										<br>
 										<h3>SPAM_WATCHER</h3>
-									</div>
-									<div id="postmark" class="tab-pane fade">
-										<br>
-										<h3>PostMark</h3>
-										<table class="alt">
-											<thead>
-												<tr>
-													<th>Descrição</th>
-													<th>PostMark</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td>Foi possível realizar a checagem?</td>
-													<td id="sucessoMark"></td>
-												</tr>
-												<tr>
-													<td id="regra0d">Descrição da regra 1</td>
-													<td id="regra0"></td>
-												</tr>
-												<tr>
-													<td id="regra1d">Descrição da regra 2</td>
-													<td id="regra1"></td>
-												</tr>
-												<tr>
-													<td id="regra2d">Descrição da regra 3</td>
-													<td id="regra2"></td>
-												</tr>
-												<tr>
-													<td id="regra3d">Descrição da regra 4</td>
-													<td id="regra3"></td>
-												</tr>
-												<tr>
-													<td id="regra4d">Descrição da regra 5</td>
-													<td id="regra4"></td>
-												</tr>
-												<tr>
-													<td id="regra5d">Descrição da regra 6</td>
-													<td id="regra5"></td>
-												</tr>
-												<tr>
-													<td id="regra6d">Descrição da regra 7</td>
-													<td id="regra6"></td>
-												</tr>
-												<tr>
-													<td id="regra7d">Descrição da regra 8</td>
-													<td id="regra7"></td>
-												</tr>
-												<tr>
-													<td id="regra8d">Descrição da regra 9</td>
-													<td id="regra8"></td>
-												</tr>
-												<tr>
-													<td>Resultado</td>
-													<td id="pontuacao"></td>
-												</tr>
-											</tbody>
-										</table>
+										<button type="button" class="collapsible">PostMark</button>
+										<div class="content-collaps">
+											<br>
+											<table class="alt">
+												<thead>
+													<tr>
+														<th>Descrição</th>
+														<th>SPAM_WATCHER</th>
+													</tr>
+												</thead>
+												<tbody> 
+													<tr id='firstTd'>
+														<td>Foi possível realizar a checagem?</td>
+														<td id="sucessoWatcher"></td>
+													</tr>
+													
+													<tr>
+														<td>Resultado</td>
+														<td id="pontuacaoWatcher"></td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									<br>
 									</div>
 									<div id="datumbox" class="tab-pane fade">
 										<br>
@@ -211,25 +189,15 @@
 
 		<!-- Scripts -->
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
-			<script src="js/apiGet.js"></script>
+			<script src="assets/js/apiGet.js"></script>
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/browser.min.js"></script>
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script src="assets/js/request.js"></script>
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-			<script>
-				async function callAPI(){
-					const email = {
-						remetente: document.getElementById('email').value,
-						body: document.getElementById('corpoEmail').value,
-					};
-					const resposta = await getApi(email);
-					console.log(resposta);
-					//getApi(email).then((resposta) => {console.log(resposta);})
-				}
-			</script>
 			
 	</body>
 </html>

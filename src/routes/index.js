@@ -21,6 +21,7 @@ app.post('/spam-analysis', async (req, res) => {
         clearout: await apis.postClearout(req.body),
         zero: await apis.getZero(req.body),
     };
+    console.log(response);
     res.send(response); 
 })
 

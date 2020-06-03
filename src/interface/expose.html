@@ -42,12 +42,18 @@
 			<section id="main" class="wrapper">
 				<div class="inner">
 					<div class="content">
+
+
+						<!-- Introdução/explicação -->
 						<header>
 							<h2>STEP_BY_STEP</h2>
 						</header>
 						<p>Basta você entrar no e-mail recebido que suspeita ser uma tentativa de Phishing ou SPAM, copiar o corpo do mesmo e colar na formulário.</p>
 						<span>NÃO CLIQUE EM NENHUM LINK OU ARQUIVO EM ANEXO DO E-MAIL SUSPEITO !!!</span>
 						<hr />
+
+
+						<!-- Formulário -->
 						<h3>E-mail suspeito</h3>
 						<form method="post" action="#">
 						<div class="row gtr-uniform">
@@ -75,6 +81,9 @@
 							<input type='button' class="button primary" onclick="callAPI()" value="Enviar" />
 						</div>
 						</form>
+
+
+						<!-- Abas das APIs -->
 						<div id="loading" class="spinner" style="display:none;"></div>
 							<div id="analise" class="table-wrapper" style="display:none;">
 								<hr>
@@ -86,6 +95,8 @@
 								<div class="tab-content">
 									<div id="spamwatcher" class="tab-pane fade in active">
 										<br>
+
+										<!-- PostMark -->
 										<button type="button" class="collapsible">PostMark</button>
 										<div class="content-collaps">
 											<br>
@@ -108,12 +119,11 @@
 												</tbody>
 											</table>	
 										</div>
-										<br>
+
+										<!-- Antideo -->
 										<button type="button" class="collapsible">Antideo</button>
 										<div class="content-collaps">
-										<br>
 										<ol class="rectangle-list">
-											<br>
 											<li><a>IP Health</a>
 												<ol>
 													<li><a id="proxy"></a></li>
@@ -123,7 +133,6 @@
 											</li>
 										</ol>
 										<ol class="rectangle-list">
-											<br>
 											<li><a>IP Info</a>
 												<ol>
 													<li><a id="host"></a></li>
@@ -134,7 +143,6 @@
 											</li>
 										</ol>
 										<ol class="rectangle-list">
-											<br>
 											<li><a>IP Location</a>
 												<ol>
 													<li><a id="city"></a></li>
@@ -146,6 +154,10 @@
 												</ol>
 											</li>
 										</ol>
+										
+										</div>
+
+										<!-- Clearout -->
 										<button type="button" class="collapsible">Clearout</button>
 										<div class="content-collaps">
 											<br>
@@ -163,8 +175,10 @@
 												</li>
 											</ol>
 										</div>
+										
 									</div>
-								</div>
+
+									<!-- DatumBox -->
 									<div id="datumbox" class="tab-pane fade">
 										<br>
 										<table class="alt">
@@ -186,6 +200,8 @@
 											</tbody>
 										</table>
 									</div>
+
+									<!-- Plino -->
 									<div id="plino" class="tab-pane fade">
 										<br>
 										<table class="alt">
@@ -207,6 +223,7 @@
 											</tbody>
 										</table>
 									</div>
+
 								</div>
 							</div>
 						</div>

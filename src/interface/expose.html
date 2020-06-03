@@ -11,6 +11,7 @@
 		<link rel="stylesheet" href="assets/css/abas.css">
 		<link rel="stylesheet" href="assets/css/loading.css">
 		<link rel="stylesheet" href="assets/css/collaps.css">
+		<link rel="stylesheet" href="assets/css/lists.css">
 		<link rel="icon" type="image/png" href="images/favicon.png">
 	</head>
 
@@ -63,7 +64,7 @@
 							</div>
 							<div class="col-12">
 								<div class="row"></div>
-								<h4>Full Header (Cabeçalho completo do e-mail)</h4>
+								<h4>Cabeçalho completo do e-mail (Full header)</h4>
 								<div class="col-75">
 									<textarea type="text" name="fullHeader" id="fullHeader" value=""  placeholder="Delivered-To: xxxxxxxxxx@gmail.com  Received: by 2006:x5x:4x53:0:0:0:0:0 with SMTP id a17cxp4065372xru;" ></textarea>
 								</div>
@@ -74,7 +75,6 @@
 							<input type='button' class="button primary" onclick="callAPI()" value="Enviar" />
 						</div>
 						</form>
-
 						<div id="loading" class="spinner" style="display:none;"></div>
 							<div id="analise" class="table-wrapper" style="display:none;">
 								<hr>
@@ -86,7 +86,6 @@
 								<div class="tab-content">
 									<div id="spamwatcher" class="tab-pane fade in active">
 										<br>
-										<h3>SPAM_WATCHER</h3>
 										<button type="button" class="collapsible">PostMark</button>
 										<div class="content-collaps">
 											<br>
@@ -102,19 +101,72 @@
 														<td>Foi possível realizar a checagem?</td>
 														<td id="sucessoWatcher"></td>
 													</tr>
-													
 													<tr>
 														<td>Resultado</td>
 														<td id="pontuacaoWatcher"></td>
 													</tr>
 												</tbody>
-											</table>
+											</table>	
 										</div>
-									<br>
+										<br>
+										<button type="button" class="collapsible">Antideo</button>
+										<div class="content-collaps">
+										<br>
+										<ol class="rectangle-list">
+											<br>
+											<li><a>IP Health</a>
+												<ol>
+													<li><a id="proxy"></a></li>
+													<li><a id="spam"></a></li>
+													<li><a id="toxic"></a></li>
+												</ol>
+											</li>
+										</ol>
+										<ol class="rectangle-list">
+											<br>
+											<li><a>IP Info</a>
+												<ol>
+													<li><a id="host"></a></li>
+													<li><a id="ip"></a></li>
+													<li><a id="category"></a></li>
+													<li><a id="company"></a></li>
+												</ol>
+											</li>
+										</ol>
+										<ol class="rectangle-list">
+											<br>
+											<li><a>IP Location</a>
+												<ol>
+													<li><a id="city"></a></li>
+													<li><a id="country"></a></li>
+													<li><a id="countrycode"></a></li>
+													<li><a id="latitude"></a></li>
+													<li><a id="longitude"></a></li>
+													<li><a id="region"></a></li>
+												</ol>
+											</li>
+										</ol>
+										<button type="button" class="collapsible">Clearout</button>
+										<div class="content-collaps">
+											<br>
+											<ol class="rectangle-list">
+												<br>
+												<li><a>E-mail verification</a>
+													<ol>
+														<li><a id="domain"></a></li>
+														<li><a id="free"></a></li>
+														<li><a id="role"></a></li>
+														<li><a id="disposable"></a></li>
+														<li><a id="safe2send"></a></li>
+														<li><a id="verified"></a></li>
+													</ol>
+												</li>
+											</ol>
+										</div>
 									</div>
+								</div>
 									<div id="datumbox" class="tab-pane fade">
 										<br>
-										<h3>DatumBox</h3>
 										<table class="alt">
 											<thead>
 												<tr>
@@ -136,7 +188,6 @@
 									</div>
 									<div id="plino" class="tab-pane fade">
 										<br>
-										<h3>Plino</h3>
 										<table class="alt">
 											<thead>
 												<tr>

@@ -13,22 +13,28 @@ app.use(function(req, res, next) {
 });
 
 app.post('/spam-analysis', async (req, res) => {
-    const payload = req.body;
-    let ip = /\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b/;
-    payload.ip = req.body.fullheader.match(ip)[0];
-    const response = {
-        datumbox: await apis.getDatumbox(payload),
-        postMark: await apis.postMark(payload),
-        plino: await apis.postPlino(payload),
-        antideo: await apis.getAntideo(payload),
-        clearout: await apis.postClearout(payload),
-        ipLocation: await apis.getIpLocation(payload),
-        ipHealth: await apis.getIpHealth(payload),
-        ipInfo: await apis.getIpInfo(payload),
-        zero: await apis.getZero(payload),
+    try{
+        const payload = req.body;
+        let ip = /\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b/;
+        payload.ip = req.body.fullheader.match(ip);
+        payload.ip = Array.isArray(payload.ip) && payload.ip.length > 0 ? payload.ip[0] : null;
+            const response = {
+            datumbox: await apis.getDatumbox(payload),
+            postMark: await apis.postMark(payload),
+            plino: await apis.postPlino(payload),
+            antideo: await apis.getAntideo(payload),
+            clearout: await apis.postClearout(payload),
+            ipLocation: await apis.getIpLocation(payload),
+            ipHealth: await apis.getIpHealth(payload),
+            ipInfo: await apis.getIpInfo(payload),
+            zero: await apis.getZero(payload),
+        };
+        console.log(response);
+        res.send(response);
+    } catch (error) {
+        res.status(500).send('Internal server error!');
+        console.log(error);
     };
-    console.log(response);
-    res.send(response);
 })
 
 app.listen(3000);

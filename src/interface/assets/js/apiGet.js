@@ -16,6 +16,7 @@ function getApi(request){
     .then((response)=>{
         document.getElementById('loading').style.display = 'none';
         document.getElementById('analise').style.display = 'block';
+
         //Deu certo o SPAM_WATCHER? e pontuação
         document.getElementById('sucessoWatcher').innerHTML = response.data.postMark.success ? 'Sim' : 'Não';
         document.getElementById('pontuacaoWatcher').innerHTML = response.data.postMark.score;
@@ -23,9 +24,10 @@ function getApi(request){
         const retornosPostMark = {
             'Message appears to be missing most RFC-822 headers': 'Faltando cabeçalho RFC-822 da mensagem'
         }
-        let count = 0;
+        let postMarkElements = document.querySelectorAll('*[id^="rule"]')
+        postMarkElements.forEach((item) => item.remove())
         response.data.postMark.rules.map((item, index) => {
-            document.getElementById(`firstTd`).insertAdjacentHTML('afterend', `<tr><td id="rule${count}d">${item.description}</td><td id="rule${count}">${item.score}</td></tr>`);
+            document.getElementById(`firstTd`).insertAdjacentHTML('afterend', `<tr><td id="rule${index}d">${item.description}</td><td id="rule${index}">${item.score}</td></tr>`);
         })
 
         //Datumbox
@@ -36,7 +38,7 @@ function getApi(request){
         document.getElementById('sucessoPlino').innerHTML = response.data.plino.status == 200 ? 'Sim' : 'Não';
         document.getElementById('plinoTb').innerHTML = response.data.plino.email_class;
 
-        //Antideo
+      /*  //Antideo
             //ipHealth
             document.getElementById('proxy').innerHTML = 'Proxy: ' + response.data.ipHealth.proxy;
             document.getElementById('spam').innerHTML = 'SPAM: ' + response.data.ipHealth.spam;
@@ -62,7 +64,14 @@ function getApi(request){
         document.getElementById('role').innerHTML = 'Perfil: ' + response.data.clearout.role;
         document.getElementById('disposable').innerHTML = 'Temporário: ' + response.data.clearout.disposable;
         document.getElementById('safe2send').innerHTML = 'Seguro para envio: ' + response.data.clearout.safe_to_send;
-        document.getElementById('verified').innerHTML = 'Verificado: ' + response.data.clearout.verified_on;
+        document.getElementById('verified').innerHTML = 'Verificado: ' + response.data.clearout.verified_on; */
+
+        //Deu certo o PhishTank?
+        let phisingTank = document.querySelectorAll('*[id^="phish"]')
+        phisingTank.forEach((item) => item.remove())
+        response.data.phish.map((item, index) => {
+            document.getElementById(`firstTdP`).insertAdjacentHTML(`afterend`, `<tr><td colspan='2' id="phish${index}u"><b>URL: ${item.url}</b></td></tr><tr><td>Foi possível realizar a checagem?</td><td id="phish${index}d">${item.database ? 'Sim' : 'Não'}</td></tr><tr><td id="phish${index}va"> É válido? </td><td>${item.valid}</td></tr><tr><td id="phish${index}ve"> Foi verificado?</td><td> ${item.verified}</td></tr><tr><td id="phish${index}at> Verificado quando?</td><td> ${item.verified_at}</td></tr>`);
+        })
 
     })
     .catch((error)=>{

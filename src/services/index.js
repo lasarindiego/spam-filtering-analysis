@@ -6,6 +6,7 @@ const servicesPlino = require('./plino');
 const servicesAntideo = require('./antideo');
 const servicesClearout = require('./clearout');
 const servicesZero = require('./zeroBounce');
+const servicesPhish = require('./phishtank');
 
 module.exports = {
     getDatumbox: servicesDatumbox,
@@ -17,4 +18,5 @@ module.exports = {
     getIpHealth: servicesAntideo.getIpHealth,
     getIpInfo: servicesAntideo.getIpInfo,
     getZero: servicesZero,
+    postPhish: servicesPhish,
 };

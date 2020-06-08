@@ -39,12 +39,12 @@ app.post('/spam-analysis', async (req, res) => {
             datumbox: await apis.getDatumbox(payload),
             postMark: await apis.postMark(payload),
             plino: await apis.postPlino(payload),
-            antideo: await apis.getAntideo(payload),
+            //antideo: await apis.getAntideo(payload),
             clearout: await apis.postClearout(payload),
             ipLocation: await apis.getIpLocation(payload),
             ipHealth: await apis.getIpHealth(payload),
             ipInfo: await apis.getIpInfo(payload),
-            zero: await apis.getZero(payload)
+            //zero: await apis.getZero(payload) //Não utilizada por instabilidade
         };
         console.log(response);
         res.send(response);

@@ -52,8 +52,8 @@ function getApi(request){
             if(response.data.hasOwnProperty('ipInfo')){
                 document.getElementById('host').innerHTML = response.data.ipInfo.hasOwnProperty('host') ? 'Host: ' + response.data.ipInfo.host : 'Não foi possível encontrar o host';
                 document.getElementById('ip').innerHTML = response.data.ipInfo.hasOwnProperty('IP') ? 'IP: ' +  response.data.ipInfo.IP : 'Não foi possível encontrar o IP';
-                document.getElementById('category').innerHTML = response.data.ipInfo.hasOwnProperty('org') && response.data.ipInfo.org.hasOwnProperty('category')  ? 'Categoria: ' + response.data.ipInfo.org.category : 'Não foi possível encontrar nenhuma categoria';
-                document.getElementById('company').innerHTML = response.data.ipInfo.hasOwnProperty('org') && response.data.ipInfo.org.hasOwnProperty('name') ? 'Empresa: ' + response.data.ipInfo.org.name : 'Não foi possível encontrar a empresa';
+                document.getElementById('category').innerHTML = response.data.ipInfo.hasOwnProperty('category')  ? 'Categoria: ' + response.data.ipInfo.category : 'Não foi possível encontrar nenhuma categoria';
+                document.getElementById('company').innerHTML = response.data.ipInfo.hasOwnProperty('name') ? 'Empresa: ' + response.data.ipInfo.name : 'Não foi possível encontrar a empresa';
             }  else {
                 document.getElementById('host').innerHTML = 'Não foi possível encontrar o host';
                 document.getElementById('ip').innerHTML = 'Não foi possível encontrar o IP';
@@ -81,7 +81,7 @@ function getApi(request){
 
         //Clearout
         if(response.data.hasOwnProperty('clearout')){
-            document.getElementById('domain').innerHTML = response.data.clearout.hasOwnProperty('detail_info') && response.data.clearout.detail_info.hasOwnProperty('domain') ? 'Domínio: ' + response.data.clearout.detail_info.domain : 'Não foi possível encontrar o domínio';
+            document.getElementById('domain').innerHTML = response.data.clearout.hasOwnProperty('domain') ? 'Domínio: ' + response.data.clearout.domain : 'Não foi possível encontrar o domínio';
             document.getElementById('free').innerHTML = response.data.clearout.hasOwnProperty('free') ? 'Gratuito: ' + response.data.clearout.free : 'Não foi possível verificar se é gratuito';
             document.getElementById('role').innerHTML = response.data.clearout.hasOwnProperty('role') ? 'Perfil: ' + response.data.clearout.role : 'Não foi possível verificar se está em algum perfil';
             document.getElementById('disposable').innerHTML = response.data.clearout.hasOwnProperty('disposable') ? 'Temporário: ' + response.data.clearout.disposable : 'Não foi possível verificar se é temporário';
@@ -95,10 +95,15 @@ function getApi(request){
         }
 
         //Deu certo o PhishTank?
-        let phisingTank = document.querySelectorAll('*[id^="phish"]')
-        phisingTank.forEach((item) => item.remove())
+        const phishTanking = document.getElementById('phishTank');
+        phishTanking ? phishTanking.forEach((item) => item.remove()) : undefined;
         response.data.phish.map((item, index) => {
-            document.getElementById(`firstTdP`).insertAdjacentHTML(`beforeend`, `<br><table  class="alt"><thead><tr><th>Descrição</th><th>Resultado</th></tr><thead><tbody></tr><tr><td colspan='2' id="phish${index}u"><b>URL: ${item.url}</b></td></tr><tr><td>Foi possível realizar a checagem?</td><td id="phish${index}d">${item.database ? 'Sim' : 'Não'}</td></tr><tr><td id="phish${index}va"> É válido? </td><td>${item.valid}</td></tr><tr><td id="phish${index}ve">Foi verificado?</td><td> ${item.verified}</td></tr><tr><td id="phish${index}at>Verificado quando?</td><td> ${item.verified_at}</td></tr></tbody></table>`);
+            if(item.database == 'Sim'){
+                document.getElementById(`firstTdP`).insertAdjacentHTML(`beforeend`, `<br><table  class="alt" id="phishTank"><thead><tr><th>Descrição</th><th>Resultado</th></tr><thead><tbody></tr><tr><td colspan='2' id="phish${index}u"><b>URL: ${item.url}</b></td></tr><tr><td>Foi possível realizar a checagem?</td><td id="phish${index}d">${item.database}</td></tr><tr><td id="phish${index}va"> O site é um phishing? </td><td>${item.valid}</td></tr><tr><td id="phish${index}ve">Foi verificado?</td><td> ${item.verified}</td></tr><tr><td id="phish${index}at>Verificado em</td><td> ${item.verified_at}</td></tr></tbody></table>`);
+            }else{
+                document.getElementById(`firstTdP`).insertAdjacentHTML(`beforeend`, `<br><table  class="alt" id="phishTank"><thead><tr><th>Descrição</th><th>Resultado</th></tr><thead><tbody></tr><tr><td colspan='2' id="phish${index}u"><b>URL: ${item.url}</b></td></tr><tr><td>Foi possível realizar a checagem?</td><td id="phish${index}d">${item.database}</td></tr></tbody></table>`);
+
+            }
         })
 
     })

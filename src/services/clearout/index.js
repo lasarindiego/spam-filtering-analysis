@@ -1,5 +1,6 @@
 'use strict'
 
+const moment = require('moment');
 const request = require('axios');
 
 const postClearout = async (objRequest) => {
@@ -15,8 +16,15 @@ const postClearout = async (objRequest) => {
         email: objRequest.remetente,
     };
     try {
-        const response = await request.post(url, data, config);
-        return (response.data.data);
+        const result = await request.post(url, data, config);
+        const response = {
+            domain: result.data.data.detail_info.domain ? result.data.data.detail_info.domain : undefined,
+            free: result.data.data.free ? (result.data.data.free == 'yes' ? 'Sim' : 'Não')  : undefined,
+            role: result.data.data.role ? (result.data.data.role == 'yes' ? 'Sim' : 'Não')  : undefined,
+            disposable: result.data.data.disposable ? (result.data.data.disposable == 'yes' ? 'Sim' : 'Não')  : undefined,
+            verified_on: result.data.data.verified_on ? moment(result.data.data.verified_on).format('DD/MM/YYYY') : undefined,
+        }
+        return (response);
     } catch (error) {
         console.log(error);
     };
